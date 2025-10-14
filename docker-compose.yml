@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  hardhat:
+    build: .
+    container_name: hardhat-node
+    working_dir: /app
+    command: npx hardhat node --hostname 0.0.0.0
+    ports:
+      - "8545:8545"
+    volumes:
+      - .:/app
+    environment:
+      NODE_ENV: development
+      RPC_URL: ${RPC_URL:-https://eth-sepolia.g.alchemy.com/v2/demo}
+      PRIVATE_KEY: ${PRIVATE_KEY:-0x0000000000000000000000000000000000000000000000000000000000000000}
+    healthcheck:
+      test: ["CMD", "curl", "-s", "http://localhost:8545"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
