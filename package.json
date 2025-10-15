@@ -11,7 +11,8 @@
     "compile": "hardhat compile",
     "deploy": "node scripts/deploy.js",
     "read": "node scripts/readChain.js",
-    "interact": "node scripts/interact.js"
+    "interact": "node scripts/interact.js",
+    "show": "node scripts/showAddress.js"
   },
   "keywords": [],
   "author": "",

@@ -18,6 +18,11 @@ contract Counter {
         emit Incremented(msg.sender, count);
     }
 
+    function decrement(uint256 counter) public {
+        require(count > 0, "Counter cannot go below zero");
+        count -= counter;
+    }
+
     // Increment and allow sending ETH
     function incrementWithPayment() public payable {
         require(msg.value > 0, "Must send ETH to use this function");

@@ -43,6 +43,14 @@ async function main() {
   console.log("Tx confirmed in block", receipt.blockNumber);
   const newCount = await contract.count();
   console.log("New count:", newCount.toString());
+
+  // 3. Total Received
+  const totalReceived = await contract.getTotalReceived();
+  console.log("Total Received:",  totalReceived.toString());
+
+  // 4. Call decrement function
+  const tx2 = await contract.decrement(1);
+  console.log("Total Reduced:",  tx2);
 }
 
 main().catch((e) => {
